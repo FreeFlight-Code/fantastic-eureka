@@ -1,0 +1,32 @@
+form {
+  display: grid;
+  margin: 0 auto;
+  --form-radius: 0.4em;
+}
+
+input {
+  width: 100%;
+  padding: 0.5em;
+  font-size: 1.2em;
+  border-radius: var(--form-radius);
+  border: none;
+}
+input:not([type="submit"]) {
+  padding: 1em 0.5em 0.5em 0.5em;
+  margin-bottom: 1em;
+}
+label {
+  position: relative;
+  top: 0.55em;
+  left: 0.75em;
+  width: min-content;
+  background-color: white;
+  padding: 0 0.5em;
+  border-radius: var(--form-radius);
+}
+
+@media (min-width: 700px) {
+  form {
+    max-width: 700px;
+  }
+}
