@@ -1,0 +1,6 @@
+{
+  "id": 1234,
+  "name": "First Professional",
+  "sections": ["header", "footer", "aside"],
+  "logo": "https://www.firstprofessional.net/uploads/1/0/3/0/103057478/fpsc-logo-jpeg.jpg"
+}

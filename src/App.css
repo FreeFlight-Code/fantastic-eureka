@@ -2,6 +2,16 @@ header {
   height: 100px;
   width: 100%;
   background-color: rgb(187, 188, 255);
+  display: grid;
+  grid-template-columns: 20% 1fr 100px;
+  justify-items: center;
+  align-items: center;
+}
+header img {
+  height: 80%;
+}
+header span:first-of-type {
+  font-size: 3em;
 }
 aside {
   background-color: rgb(255, 177, 177);
@@ -9,12 +19,13 @@ aside {
 .content.region {
   height: 100%;
   min-height: calc(100vh - 100px - 100px);
-  width: 100%;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   background-color: rgb(196, 255, 208);
 }
 .content.section {
   padding: 20px;
+  margin: 0 auto;
 }
 footer {
   height: 100px;
@@ -22,7 +33,10 @@ footer {
   background-color: rgb(255, 209, 124);
 }
 @media (min-width: 700px) {
-  .content {
-    grid-template-columns: 20% 1fr;
+  .content.region {
+    flex-direction: row;
+  }
+  aside {
+    width: 20%;
   }
 }

@@ -34,3 +34,6 @@ body {
   --bg-color: black;
   --heading-color: #01023f;
 }
+.hidden {
+  display: none;
+}
