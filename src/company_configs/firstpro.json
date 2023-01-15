@@ -1,6 +1,7 @@
 {
   "id": 1234,
   "name": "First Professional",
+  "isAdmin": false,
   "sections": ["header", "footer"],
   "logo": "https://www.firstprofessional.net/uploads/1/0/3/0/103057478/fpsc-logo-jpeg.jpg"
 }

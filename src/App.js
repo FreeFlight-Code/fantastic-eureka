@@ -4,6 +4,7 @@ import useLogin from "./hooks/useLogin";
 
 function App(props) {
   const [user, set_user] = useLogin();
+  console.log(user);
   if (!user) return <LoginPage setUser={set_user} />;
   return <Dash {...{ user }} />;
 }
@@ -11,7 +12,9 @@ function App(props) {
 export default App;
 
 function Dash(props) {
-  const isAdmin = false;
+  const {
+    user: { isAdmin },
+  } = props;
   if (isAdmin) return <AdminDash {...props} />;
   return <ClientDash {...props} />;
 }
@@ -21,7 +24,7 @@ function AdminDash(props) {
 
 function ClientDash(props) {
   const {
-    user: { name: companyName },
+    user: { textId: companyName },
   } = props;
   const company = require(`./company_configs/${companyName}.json`);
   return (
@@ -99,9 +102,13 @@ function Nav(props) {
   ];
   return (
     <nav>
-      {navList.map((item) => {
+      {navList.map((item, index) => {
         return (
-          <span tabIndex="0" onClick={(e) => console.log(item)}>
+          <span
+            key={`nav-item-${index}`}
+            tabIndex="0"
+            onClick={(e) => console.log(item)}
+          >
             {item}
           </span>
         );
