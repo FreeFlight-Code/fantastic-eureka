@@ -1,6 +1,8 @@
 import "./login.css";
+import { login } from "../../../api";
 
-function Form(props) {
+export function Form(props) {
+  const { setUser } = props;
   function handleSubmit(event) {
     event.preventDefault();
     const {
@@ -9,7 +11,7 @@ function Form(props) {
         password: { value: password } = {},
       } = {},
     } = event;
-    console.log({ email, password });
+    setUser(login({ email, password }));
   }
   return (
     <form name="login" className="form login" onSubmit={handleSubmit}>
@@ -23,3 +25,13 @@ function Form(props) {
 }
 
 export default Form;
+
+export function LoginPage(props) {
+  const { setUser } = props;
+
+  return (
+    <div className="page">
+      <Form setUser={setUser} />
+    </div>
+  );
+}

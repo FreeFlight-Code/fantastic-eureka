@@ -26,6 +26,7 @@ aside {
 .content.section {
   padding: 20px;
   margin: 0 auto;
+  width: 100%;
 }
 footer {
   height: 100px;
@@ -39,4 +40,17 @@ footer {
   aside {
     width: 20%;
   }
+}
+nav {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+nav > * {
+  min-width: min-content;
+  justify-self: flex-end;
+}
+.page {
+  padding: 20vh;
 }
