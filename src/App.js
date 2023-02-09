@@ -1,11 +1,11 @@
+import { useState } from "react";
 import "./app.css";
 import { LoginPage } from "./components/pages/login";
-import useLogin from "./hooks/useLogin";
+import PassProps from './hof/PassPropsToChildren.js'
 
 function App(props) {
-  const [user, set_user] = useLogin();
-  console.log(user);
-  if (!user) return <LoginPage setUser={set_user} />;
+  const [user, set_user] = useState();
+  if (!user) return <LoginPage setUser={set_user}  />;
   return <Dash {...{ user }} />;
 }
 
@@ -22,25 +22,21 @@ function AdminDash(props) {
   return <div>Admin Dashboard</div>;
 }
 
-function ClientDash(props) {
-  const {
-    user: { textId: companyName },
-  } = props;
-  const company = require(`./company_configs/${companyName}.json`);
+function ClientDash (props){
   return (
-    <>
-      <Header user={company} />
-      <Content user={company}>
+    <PassProps {...props}>
+      <Header/>
+      <Content>
         <div>content</div>
       </Content>
-      <Footer user={company} />
-    </>
+      <Footer/>
+      <div>hi</div>
+    </PassProps>
   );
 }
 
 function Header(props) {
-  const { children, user } = props;
-  const { name, sections, logo } = user;
+  const {children, user: { name, sections = [], logo }={}} = props;
   if (!sections.includes("header")) return null;
   return (
     <header>
@@ -52,8 +48,7 @@ function Header(props) {
   );
 }
 function Aside(props) {
-  const { children, user } = props;
-  const { sections } = user;
+  const { children, user: {sections = []} = {} } = props;
   if (!sections.includes("aside")) return null;
   return (
     <aside>
@@ -75,8 +70,7 @@ function Content(props) {
   );
 }
 function Footer(props) {
-  const { children, user } = props;
-  const { sections } = user;
+  const { children, user: {sections = []} = {} } = props;
   if (!sections.includes("header")) return null;
   return (
     <footer>
@@ -94,12 +88,12 @@ function Menu(props) {
 }
 function Nav(props) {
   const navList = [
-    "navItem 1",
-    "navItem 2",
-    "navItem 3",
-    "navItem 4",
-    "navItem 5",
-  ];
+    "navItem",
+    "navItem",
+    "navItem",
+    "navItem",
+    "navItem",
+  ]; 
   return (
     <nav>
       {navList.map((item, index) => {
@@ -109,7 +103,7 @@ function Nav(props) {
             tabIndex="0"
             onClick={(e) => console.log(item)}
           >
-            {item}
+            {`${item} ${index+1}`}
           </span>
         );
       })}

@@ -11,8 +11,9 @@ export function Form(props) {
         password: { value: password } = {},
       } = {},
     } = event;
-    setUser(login({ email, password }));
+    setUser(login( email, password ));
   }
+
   return (
     <form name="login" className="form login" onSubmit={handleSubmit}>
       <label htmlFor="email">Email</label>

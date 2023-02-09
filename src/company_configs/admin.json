@@ -1,0 +1,7 @@
+{
+  "id": "admin",
+  "name": "Administration",
+  "isAdmin": true,
+  "sections": ["header", "footer"],
+  "logo": "https://mndaily.com/wp-content/uploads/2019/06/graphics_6.25.19-letterstotheeditor-CMYK-01-900x900.jpeg"
+}
